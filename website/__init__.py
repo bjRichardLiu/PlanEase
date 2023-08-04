@@ -27,6 +27,7 @@ def create_app():
     
     from .models import User, Tasks
     
+    # https://stackoverflow.com/questions/73968584/flask-sqlalchemy-db-create-all-got-an-unexpected-keyword-argument-app
     with app.app_context():
         db.create_all()
     
