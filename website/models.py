@@ -10,7 +10,7 @@ class Tasks (db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
-    # foreign key to link to user, if no id, it won't create the note
+    # foreign key to link to user, if no id, it won't create the task
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 # TODO add other kinds of information of the user
