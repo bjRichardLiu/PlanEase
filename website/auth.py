@@ -25,7 +25,7 @@ def login():
         else:
             flash('Email does not exist, please create an account.', category='error')
         
-    return "<h1>Login</h1>"
+    return render_template("login.html", user=current_user)
 
 # create a route for the logout page
 @auth.route('/logout')
@@ -62,4 +62,4 @@ def sign_up():
             flash('Account created!', category='success')
             return redirect(url_for('views.home'))
         
-    return "<h1>Sign Up</h1>"
+    return render_template("sign_up.html", user=current_user)
