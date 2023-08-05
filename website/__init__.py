@@ -26,6 +26,11 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
     
     from .models import User, Task, ReservedTime, WakeUpTime
+    """
+    # Important!! Delete before deployment
+    with app.app_context():
+        db.drop_all()
+    """
     
     # https://stackoverflow.com/questions/73968584/flask-sqlalchemy-db-create-all-got-an-unexpected-keyword-argument-app
     with app.app_context():

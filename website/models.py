@@ -41,4 +41,4 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     firstName = db.Column(db.String(150))
     password = db.Column(db.String(150))
-    tasks = db.relationship('Tasks')
+    task = db.relationship('Task')

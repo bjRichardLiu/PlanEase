@@ -10,6 +10,7 @@ views = Blueprint('views', __name__)
 @views.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
+    
     if request.method == 'POST':
         # HTML needs to get there parameters
         task = request.form.get('task')
@@ -27,5 +28,6 @@ def home():
             db.session.add(newTask)
             db.session.commit()
             flash('Task added!', category='success')
+    
             
     return render_template("home.html", user=current_user)
