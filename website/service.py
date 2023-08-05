@@ -5,6 +5,8 @@ import json
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, jsonify
 
+
+# Get the data of current user
 def get_user_schedule():
     user = current_user
 
@@ -29,6 +31,55 @@ def get_user_schedule():
     }
 
     return response_data, 200
+
+# Add reserved time to the schedule
+def add_reserved_time(week, eventID=0, begin=0, end=0, weekDays=False):
+    if eventID == 0:
+        return week
+    begin *= 2
+    end *= 2
+    if weekDays:
+        for i in range(begin, end + 1):
+            week[i, :5] = eventID
+    else:
+        for i in range(begin, end + 1):
+            week[i, :] = eventID
+    return week
+    
+    
+# Add tasks to the schedule
+def add_task(week, eventID=0, time=0, morning=False, wakeUpTime=0, deadline=0):
+    if eventID == 0:
+        return week, True
+    time *= 2
+    wakeUpTime *= 2
+    if morning:
+        week, timeLeft = addEventHelper(week, eventID, time, wakeUpTime, deadline)
+        if timeLeft > 0:
+            week, timeLeft = addEventHelper(week, eventID, time, 24, deadline)
+    else:
+        week, timeLeft = addEventHelper(week, eventID, time, 24, deadline)
+        if timeLeft > 0:
+            week, timeLeft = addEventHelper(week, eventID, time, wakeUpTime, deadline)
+    # Check if the task is added fully
+    if timeLeft > 0:
+        return week, False
+    else:
+        return week, True
+
+
+# Helper function for add_task
+def addEventHelper(week, eventID, time, startTime, endDate):
+    for i in range(startTime, startTime + 24):
+        if time == 0:
+            return week, time
+        for j in range(endDate):
+            if week[i, j] == 0:
+                if time == 0:
+                    return week, time
+                else:
+                    week[i, j] = eventID
+                    time -= 1
 
 def createNewSchedule():
     intID = 1
