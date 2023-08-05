@@ -31,8 +31,7 @@ class ReservedTime (db.Model):
 
 class WakeUpTime (db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    weekdays = db.Column(db.Integer)
-    weekends = db.Column(db.Integer)
+    wakeUpTime = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 class User(db.Model, UserMixin):
@@ -41,4 +40,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True)
     firstName = db.Column(db.String(150))
     password = db.Column(db.String(150))
-    task = db.relationship('Task')
+    tasks = db.relationship('Task')
+    wakeupTime = db.relationship('WakeUpTime')
+    reservedTime = db.relationship('ReservedTime')
