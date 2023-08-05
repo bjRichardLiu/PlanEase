@@ -21,8 +21,18 @@ def get_user_schedule():
 
     # Prepare the data to be sent in the response
     wakeup_time_data = {"wakeUpTime": wakeup_time.wakeUpTime} if wakeup_time else {}
-    tasks_data = [{"data": task.data, "date": task.date.isoformat()} for task in tasks]
-    reserved_times_data = [{"data": rt.data, "beginTime": rt.beginTime, "endTime": rt.endTime, "date": rt.date.isoformat()} for rt in reserved_times]
+    tasks_data = [{"data": task.data, 
+                   "morning": task.morning,
+                   "weekdaysOnly": task.weekdaysOnly,
+                   "deadline": task.deadline,
+                   "timeRequired": task.timeRequired,
+                   "date": task.date.isoformat()} for task in tasks]
+    reserved_times_data = [{"data": rt.data, 
+                            "id": rt.id,
+                            "beginTime": rt.beginTime, 
+                            "endTime": rt.endTime, 
+                            "weekdaysOnly": rt.weekdaysOnly,
+                            "date": rt.date.isoformat()} for rt in reserved_times]
 
     response_data = {
         "wakeupTime": wakeup_time_data,
@@ -80,6 +90,22 @@ def addEventHelper(week, eventID, time, startTime, endDate):
                 else:
                     week[i, j] = eventID
                     time -= 1
+
+def add_sleep_time(week, wakeUpTime=8):
+    wakeUpTime *= 2
+    # From 12a.m. to wakeUpTime
+    for i in range(0, wakeUpTime):
+        for j in range(0, 7):
+            if week[i, j] == 0:
+                week[i, j] = 1
+    # From 10p.m. to 12a.m.
+    for i in range(44, 48):
+        for j in range(0, 7):
+            if week[i, j] == 0:
+                week[i, j] = 1
+    return week
+
+# TODO print the schedule to the website
 
 def createNewSchedule():
     intID = 1

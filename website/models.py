@@ -13,7 +13,6 @@ class Task (db.Model):
     morning = db.Column(db.Boolean)
     weekdaysOnly = db.Column(db.Boolean)
     deadline = db.Column(db.Integer)
-    priority = db.Column(db.Integer)
     timeRequired = db.Column(db.Integer)
     
     # foreign key to link to user, if no id, it won't create the task
