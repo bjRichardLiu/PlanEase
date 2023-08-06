@@ -1,5 +1,302 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1> This is the home page</h1>
+<head>
+    <title>Input Data</title>
+</head>
+
+<body>
+    <h1>Input Data</h1>
+    <br>
+    <br>
+    <form method="POST" action="{{ url_for('views.home') }}">
+        <table border="2" class="normal">
+            <tbody>
+                <tr> 
+                    <td align="left">
+                        Wake Up Time:
+                        <input type="time" size="12" id="wakeupTime" name="wakeupTime" required><br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h2>Fixed Schedule:</h2>
+        <table border="2" class="normal">
+            <tbody>
+                <tr> 
+                    <td class="normal" align="center" colspan="5">
+                        <h5>Fixed Schedule 1</h5>
+                    </td>
+                </tr>
+                <tr> 
+                    <td align="center"></td>
+                    <td align="left">
+                        Name:
+                        <input type="text" size="12" id="FS1_name" name="FS1_name" required><br>
+                    </td>
+                    <td align="right" class="wide">
+                          Start Time:
+                          <input type="time" id="start_time1" name="start_time1" required><br>
+                          End Time:
+                          <input type="time" id="end_time1" name="end_time1" required><br>
+                    </td>
+                    <td align="right" class="wide">
+                        Weekdays:
+                        <input type="radio" id="weekdays" name="weekdays" value="weekdays"><br>
+                        Weekend:
+                        <input type="radio" id="weekend" name="weekdays" value="weekend"><br>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table border="2" class="normal">
+            <tbody>
+                <tr> 
+                    <td class="normal" align="center" colspan="5">
+                        <h5>Fixed Schedule 2</h5>
+                    </td>
+                </tr>
+                <tr> 
+                    <td align="center"></td>
+                    <td align="left">
+                        Name:
+                        <input type="text" size="12" id="FS2_name" name="FS2_name" required><br>
+                    </td>
+                    <td align="right" class="wide">
+                          Start Time:
+                          <input type="time" id="start_time2" name="start_time2" required><br>
+                          End Time:
+                          <input type="time" id="end_time2" name="end_time2" required><br>
+                    </td>
+                    <td align="right" class="wide">
+                        Weekdays:
+                        <input type="radio" id="weekdays" name="weekdays" value="weekdays"><br>
+                        Weekend:
+                        <input type="radio" id="weekend" name="weekdays" value="weekend"><br>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h2>Tasks:</h2>
+        <table border="2" class="normal">
+            <tbody>
+                <tr> 
+                    <td class="normal" align="center" colspan="5">
+                        <h5>Task 1</h5>
+                    </td>
+                </tr>
+                <tr> 
+                    <td align="center"></td>
+                    <td align="right">
+                        Name:
+                        <input type="text" size="12" id="FS2_name" name="FS2_name" required><br>
+                        <br>
+                        Task Duration:
+                        <input type="time" id="timeRequired" name="timeRequired" required><br>
+                    </td>
+                    <td align="right" class="wide">
+                          
+                    </td>
+                    <td align="right" class="wide">
+                        <h6>Deadline&nbsp&nbsp&nbsp&nbsp</h6>
+                        Monday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Tuesday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Wednesday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Thursday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Friday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Saturday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Sunday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                    </td>
+                    <td align="right" class="wide">
+                        <h6>Time Preferences</h6>
+                        Morning
+                        <input type="radio" id="morning" name="morning" value="morning"><br>
+                        Eveninig or Afternoon
+                        <input type="radio" id="morning" name="morning" value="morning"><br>
+                        <br>
+                        <h6>Weekdays or Weekend</h6>
+                        Weedays
+                        <input type="radio" id="weekdaysOnly" name="weekdaysOnly" value="weekdaysOnly"><br>
+                        Weekends
+                        <input type="radio" id="weekdaysOnly" name="weekdaysOnly" value="weekdaysOnly"><br>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table border="2" class="normal">
+            <tbody>
+                <tr> 
+                    <td class="normal" align="center" colspan="5">
+                        <h5>Task 2</h5>
+                    </td>
+                </tr>
+                <tr> 
+                    <td align="center"></td>
+                    <td align="right">
+                        Name:
+                        <input type="text" size="12" id="FS2_name" name="FS2_name" required><br>
+                        <br>
+                        Task Duration:
+                        <input type="time" id="timeRequired" name="timeRequired" required><br>
+                    </td>
+                    <td align="right" class="wide">
+                          
+                    </td>
+                    <td align="right" class="wide">
+                        <h6>Deadline&nbsp&nbsp&nbsp&nbsp</h6>
+                        Monday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Tuesday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Wednesday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Thursday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Friday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Saturday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Sunday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                    </td>
+                    <td align="right" class="wide">
+                        <h6>Time Preferences</h6>
+                        Morning
+                        <input type="radio" id="morning" name="morning" value="morning"><br>
+                        Eveninig or Afternoon
+                        <input type="radio" id="morning" name="morning" value="morning"><br>
+                        <br>
+                        <h6>Weekdays or Weekend</h6>
+                        Weedays
+                        <input type="radio" id="weekdaysOnly" name="weekdaysOnly" value="weekdaysOnly"><br>
+                        Weekends
+                        <input type="radio" id="weekdaysOnly" name="weekdaysOnly" value="weekdaysOnly"><br>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table border="2" class="normal">
+            <tbody>
+                <tr> 
+                    <td class="normal" align="center" colspan="5">
+                        <h5>Task 3</h5>
+                    </td>
+                </tr>
+                <tr> 
+                    <td align="center"></td>
+                    <td align="right">
+                        Name:
+                        <input type="text" size="12" id="FS2_name" name="FS2_name" required><br>
+                        <br>
+                        Task Duration:
+                        <input type="time" id="timeRequired" name="timeRequired" required><br>
+                    </td>
+                    <td align="right" class="wide">
+                          
+                    </td>
+                    <td align="right" class="wide">
+                        <h6>Deadline&nbsp&nbsp&nbsp&nbsp</h6>
+                        Monday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Tuesday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Wednesday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Thursday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Friday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Saturday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Sunday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                    </td>
+                    <td align="right" class="wide">
+                        <h6>Time Preferences</h6>
+                        Morning
+                        <input type="radio" id="morning" name="morning" value="morning"><br>
+                        Eveninig or Afternoon
+                        <input type="radio" id="morning" name="morning" value="morning"><br>
+                        <br>
+                        <h6>Weekdays or Weekend</h6>
+                        Weedays
+                        <input type="radio" id="weekdaysOnly" name="weekdaysOnly" value="weekdaysOnly"><br>
+                        Weekends
+                        <input type="radio" id="weekdaysOnly" name="weekdaysOnly" value="weekdaysOnly"><br>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table border="2" class="normal">
+            <tbody>
+                <tr> 
+                    <td class="normal" align="center" colspan="5">
+                        <h5>Task 4</h5>
+                    </td>
+                </tr>
+                <tr> 
+                    <td align="center"></td>
+                    <td align="right">
+                        Name:
+                        <input type="text" size="12" id="FS2_name" name="FS2_name" required><br>
+                        <br>
+                        Task Duration:
+                        <input type="time" id="timeRequired" name="timeRequired" required><br>
+                    </td>
+                    <td align="right" class="wide">
+                          
+                    </td>
+                    <td align="right" class="wide">
+                        <h6>Deadline&nbsp&nbsp&nbsp&nbsp</h6>
+                        Monday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Tuesday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Wednesday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Thursday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Friday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Saturday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                        Sunday
+                        <input type="radio" id="deadline" name="deadline" value="deadline"><br>
+                    </td>
+                    <td align="right" class="wide">
+                        <h6>Time Preferences</h6>
+                        Morning
+                        <input type="radio" id="morning" name="morning" value="morning"><br>
+                        Eveninig or Afternoon
+                        <input type="radio" id="morning" name="morning" value="morning"><br>
+                        <br>
+                        <h6>Weekdays or Weekend</h6>
+                        Weedays
+                        <input type="radio" id="weekdaysOnly" name="weekdaysOnly" value="weekdaysOnly"><br>
+                        Weekends
+                        <input type="radio" id="weekdaysOnly" name="weekdaysOnly" value="weekdaysOnly"><br>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <input type="submit" value="Save Data">
+        <br>
+        <br>
+    </form>
+</body>
+
 {% endblock %}
