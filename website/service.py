@@ -36,16 +36,14 @@ def get_user_schedule():
     # Prepare the data to be sent in the response
     wakeup_time_data = {"wakeUpTime": wakeup_time.wakeUpTime} if wakeup_time else {}
     tasks_data = [{"data": task.data, 
-                   "morning": task.morning,
-                   "weekdaysOnly": task.weekdaysOnly,
+                   "timePreference": task.timePreference,
                    "deadline": task.deadline,
-                   "timeRequired": task.timeRequired,
+                   "timeRequired": int(2 * task.timeRequired),
                    "date": task.date.isoformat()} for task in tasks]
     reserved_times_data = [{"data": rt.data, 
                             "id": rt.id,
                             "beginTime": rt.beginTime, 
                             "endTime": rt.endTime, 
-                            "weekdaysOnly": rt.weekdaysOnly,
                             "date": rt.date.isoformat()} for rt in reserved_times]
 
     response_data = {
@@ -57,32 +55,31 @@ def get_user_schedule():
     return response_data, 200
 
 # Add reserved time to the schedule
-def add_reserved_time(week, eventID=0, begin=0, end=0, weekDays=False):
+def add_reserved_time(week, eventID=0, begin=0, end=0):
     if eventID == 0:
         return week
-    begin *= 2
-    end *= 2
-    if weekDays:
-        for i in range(begin, end + 1):
-            week[i, :5] = eventID
-    else:
-        for i in range(begin, end + 1):
-            week[i, :] = eventID
+    if begin > end:
+        return week
+    for i in range(begin, end + 1):
+        week[i, :5] = eventID
     return week
     
     
 # Add tasks to the schedule
-def add_task(week, eventID=0, time=0, morning=False, wakeUpTime=0, deadline=0):
+def add_task(week, eventID=0, time=0, timePreference=1, wakeUpTime=0, deadline=5):
     if eventID == 0:
         return week, True
-    time *= 2
-    wakeUpTime *= 2
-    if morning:
+    if timePreference == 0:
         week, timeLeft = addEventHelper(week, eventID, time, wakeUpTime, deadline)
         if timeLeft > 0:
             week, timeLeft = addEventHelper(week, eventID, time, 24, deadline)
-    else:
+    elif timePreference == 1:
         week, timeLeft = addEventHelper(week, eventID, time, 24, deadline)
+        if timeLeft > 0:
+            week, timeLeft = addEventHelper(week, eventID, time, wakeUpTime, deadline)
+    else:
+        # Evening starts from 6p.m.
+        week, timeLeft = addEventHelper(week, eventID, time, 24 + 12, deadline)
         if timeLeft > 0:
             week, timeLeft = addEventHelper(week, eventID, time, wakeUpTime, deadline)
     # Check if the task is added fully
