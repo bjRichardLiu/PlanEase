@@ -5,6 +5,20 @@ import json
 from flask_login import login_required, current_user
 from flask import Blueprint, render_template, request, flash, jsonify
 
+# Delete all the data of the current user
+# Delete the associated Task records
+def delete_user_data():
+    user = current_user
+    Task.query.filter_by(user_id=user.id).delete()
+
+    # Delete the associated ReservedTime records
+    ReservedTime.query.filter_by(user_id=user.id).delete()
+
+    # Delete the associated WakeUpTime record
+    WakeUpTime.query.filter_by(user_id=user.id).delete()
+
+    # Commit the changes to the database
+    db.session.commit()
 
 # Get the data of current user
 def get_user_schedule():
