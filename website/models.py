@@ -10,8 +10,8 @@ class Task (db.Model):
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.String(10000))
     date = db.Column(db.DateTime(timezone=True), default=func.now())
-    morning = db.Column(db.Boolean)
-    weekdaysOnly = db.Column(db.Boolean)
+    # 0 for morning, 1 for afternoon, 2 for evening
+    timePreference = db.Column(db.Integer)
     deadline = db.Column(db.Integer)
     timeRequired = db.Column(db.Integer)
     
@@ -24,7 +24,6 @@ class ReservedTime (db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     beginTime = db.Column(db.Integer)
     endTime = db.Column(db.Integer)
-    weekdaysOnly = db.Column(db.Boolean)
     # foreign key to link to user, if no id, it won't create the task
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
