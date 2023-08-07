@@ -147,7 +147,7 @@ h5 span{
 }
 .center-wrap{
   position: absolute;
-  width: 100%;
+  width: 70%;
   padding: 0 35px;
   top: 50%;
   left: 0;
@@ -190,7 +190,7 @@ h5 span{
 .input-icon {
   position: absolute;
   top: 0;
-  left: 18px;
+  /* left: 18px; */
   height: 48px;
   font-size: 24px;
   line-height: 48px;
