@@ -5,7 +5,7 @@ app = create_app()
 
 if __name__ == '__main__':
     # app.run(debug=False)
-    # Production
+    # Production using wsgi server
     http_server = WSGIServer(('', 8000), app)
     http_server.serve_forever()
     
