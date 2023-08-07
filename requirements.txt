@@ -1,7 +1,7 @@
-Flask==2.3.2
-Flask_Login==0.6.2
-flask_sqlalchemy==3.0.5
-gevent==22.10.2
-numpy==1.25.0
-SQLAlchemy==1.4.39
-Werkzeug==2.3.6
+Flask
+Flask_Login
+flask_sqlalchemy
+gevent
+numpy
+SQLAlchemy
+Werkzeug
