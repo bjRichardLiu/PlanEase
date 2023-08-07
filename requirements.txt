@@ -5,3 +5,4 @@ gevent
 numpy
 SQLAlchemy
 Werkzeug
+gunicorn
