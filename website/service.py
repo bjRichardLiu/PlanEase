@@ -118,10 +118,10 @@ def add_sleep_time(week, wakeUpTime=8):
 # TODO print the schedule to the website
 
 def createNewSchedule():
-    intID = 1
+    intID = 2
     intToTask = []
-    intToTask.append("free")
-    intToTask.append("sleep")
+    intToTask.append({"data": "free", "class": "task-0"})
+    intToTask.append({"data": "sleep", "class": "task-1"})
 
     # Initialize the week using vector
     week = np.zeros((48, 5))
@@ -140,21 +140,20 @@ def createNewSchedule():
         end_time = int(reserved_time.get("endTime", "0"))
         if reserved_time.get("data", "") != "" and begin_time < end_time:
             # print(begin_time, end_time)
-            intToTask.append(reserved_time.get("data", ""))
-            intID += 1
+            intToTask.append({"data": reserved_time.get("data", ""), "class": "task-" + str(intID)})
             week = add_reserved_time(week, eventID=intID, begin=begin_time, end=end_time)
+            intID += 1
 
     # Add tasks to the schedule
     for task in tasks_data:
         if task.get("data", "") != "" and task.get("timeRequired", 0) != 0:
-            intToTask.append(task.get("data", ""))
-            intID += 1
+            intToTask.append({"data": task.get("data", ""), "class": "task-" + str(intID)})
             task_time_required = int(task.get("timeRequired", 0))
             time_preference = int(task.get("timePreference", 1))
             deadline = int(task.get("deadline", 5))
             # Add the task using the add_task function
             week, added_fully = add_task(week, eventID=intID, time=task_time_required, timePreference=time_preference, wakeUpTime=wakeup_time_data.get("wakeUpTime", 0), deadline=deadline)
-
+            intID += 1
 
     # Add sleep time to the schedule
     week = add_sleep_time(week, wakeUpTime=wakeup_time_data.get("wakeUpTime", 8))
@@ -168,7 +167,7 @@ def createNewSchedule():
         print("\n")
     """
     
-    return week
+    return week, intToTask
 
 
 

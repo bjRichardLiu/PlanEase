@@ -1,0 +1,42 @@
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+
+
+.task-0 {
+    background-color: white;
+}
+
+.task-1 {
+    background-color: purple;
+}
+
+.task-2 {
+    background-color: red;
+}
+
+.task-3 {
+    background-color: orange;
+}
+
+.task-4 {
+    background-color: yellow;
+}
+
+.task-5 {
+    background-color: blue;
+}
+
+.task-6 {
+    background-color: green;
+}
+
+.task-7 {
+    background-color: blue;
+}

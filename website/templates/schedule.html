@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+{% block title %}Schedule{% endblock %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Schedule</h1>
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+        {% for row in schedule %}
+        <tr>
+            <td>{{ row.time }}</td>
+            <td class="{{ row.monday['class'] }}">{{ row.monday['data'] }}</td>
+            <td class="{{ row.tuesday['class'] }}">{{ row.tuesday['data'] }}</td>
+            <td class="{{ row.wednesday['class'] }}">{{ row.wednesday['data'] }}</td>
+            <td class="{{ row.thursday['class'] }}">{{ row.thursday['data'] }}</td>
+            <td class="{{ row.friday['class'] }}">{{ row.friday['data'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}
+-->
