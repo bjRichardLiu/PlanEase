@@ -25,13 +25,13 @@ def get_user_schedule():
     user = current_user
 
     # Get the latest wake-up time
-    wakeup_time = user.wakeupTime.order_by(WakeUpTime.id.desc()).first()
+    wakeup_time = user.wakeupTime[-1] if user.wakeupTime else None
 
     # Get the latest 4 tasks for the user
-    tasks = user.tasks.order_by(Task.date.desc()).limit(4).all()
+    tasks = user.tasks[-4:]
 
     # Get the latest 2 reserved times for the user
-    reserved_times = user.reservedTime.order_by(ReservedTime.date.desc()).limit(2).all()
+    reserved_times = user.reservedTime[-2:]
 
     # Prepare the data to be sent in the response
     wakeup_time_data = {"wakeUpTime": wakeup_time.wakeUpTime} if wakeup_time else {}
@@ -94,7 +94,7 @@ def addEventHelper(week, eventID, time, startTime, endDate):
     for i in range(startTime, startTime + 24):
         if time == 0:
             return week, time
-        for j in range(endDate):
+        for j in range(endDate + 1):
             if week[i, j] == 0:
                 if time == 0:
                     return week, time
@@ -103,15 +103,14 @@ def addEventHelper(week, eventID, time, startTime, endDate):
                     time -= 1
 
 def add_sleep_time(week, wakeUpTime=8):
-    wakeUpTime *= 2
     # From 12a.m. to wakeUpTime
     for i in range(0, wakeUpTime):
-        for j in range(0, 7):
+        for j in range(0, 5):
             if week[i, j] == 0:
                 week[i, j] = 1
     # From 10p.m. to 12a.m.
     for i in range(44, 48):
-        for j in range(0, 7):
+        for j in range(0, 5):
             if week[i, j] == 0:
                 week[i, j] = 1
     return week
@@ -122,10 +121,54 @@ def createNewSchedule():
     intID = 1
     intToTask = []
     intToTask.append("free")
+    intToTask.append("sleep")
+
     # Initialize the week using vector
-    week = np.zeros((48,7))
-    data = get_user_schedule()
+    week = np.zeros((48, 5))
+
+    # Get user schedule data
+    data, status_code = get_user_schedule()
+
+    # Extract data from the response data
+    wakeup_time_data = data.get("wakeupTime", {})
+    tasks_data = data.get("tasks", [])
+    reserved_times_data = data.get("reservedTime", [])
+
+    # Add reserved times to the schedule
+    for reserved_time in reserved_times_data:
+        begin_time = int(reserved_time.get("beginTime", "0"))
+        end_time = int(reserved_time.get("endTime", "0"))
+        if reserved_time.get("data", "") != "" and begin_time < end_time:
+            # print(begin_time, end_time)
+            intToTask.append(reserved_time.get("data", ""))
+            intID += 1
+            week = add_reserved_time(week, eventID=intID, begin=begin_time, end=end_time)
+
+    # Add tasks to the schedule
+    for task in tasks_data:
+        if task.get("data", "") != "" and task.get("timeRequired", 0) != 0:
+            intToTask.append(task.get("data", ""))
+            intID += 1
+            task_time_required = int(task.get("timeRequired", 0))
+            time_preference = int(task.get("timePreference", 1))
+            deadline = int(task.get("deadline", 5))
+            # Add the task using the add_task function
+            week, added_fully = add_task(week, eventID=intID, time=task_time_required, timePreference=time_preference, wakeUpTime=wakeup_time_data.get("wakeUpTime", 0), deadline=deadline)
+
+
+    # Add sleep time to the schedule
+    week = add_sleep_time(week, wakeUpTime=wakeup_time_data.get("wakeUpTime", 8))
     
+    """
+    print(week)
+    # Print the schedule (TODO: Implement printing schedule to the website)
+    for i in range(0,48):
+        for j in range(0, 5):
+            print(intToTask[int(week[i, j])], end = " ")
+        print("\n")
+    """
+    
+    return week
 
 
 
