@@ -18,19 +18,31 @@
             <th>Wednesday</th>
             <th>Thursday</th>
             <th>Friday</th>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
         </tr>
         {% for row in schedule %}
         <tr>
-            <td>{{ row.time }}</td>
-            <td class="{{ row.monday['class'] }}">{{ row.monday['data'] }}</td>
-            <td class="{{ row.tuesday['class'] }}">{{ row.tuesday['data'] }}</td>
-            <td class="{{ row.wednesday['class'] }}">{{ row.wednesday['data'] }}</td>
-            <td class="{{ row.thursday['class'] }}">{{ row.thursday['data'] }}</td>
-            <td class="{{ row.friday['class'] }}">{{ row.friday['data'] }}</td>
+            <td>{{ row.time1 }}</td>
+            <td class="{{ row.monday1['class'] }}">{{ row.monday1['data'] }}</td>
+            <td class="{{ row.tuesday1['class'] }}">{{ row.tuesday1['data'] }}</td>
+            <td class="{{ row.wednesday1['class'] }}">{{ row.wednesday1['data'] }}</td>
+            <td class="{{ row.thursday1['class'] }}">{{ row.thursday1['data'] }}</td>
+            <td class="{{ row.friday1['class'] }}">{{ row.friday1['data'] }}</td>
+            <td>{{ row.time2 }}</td>
+            <td class="{{ row.monday2['class'] }}">{{ row.monday2['data'] }}</td>
+            <td class="{{ row.tuesday2['class'] }}">{{ row.tuesday2['data'] }}</td>
+            <td class="{{ row.wednesday2['class'] }}">{{ row.wednesday2['data'] }}</td>
+            <td class="{{ row.thursday2['class'] }}">{{ row.thursday2['data'] }}</td>
+            <td class="{{ row.friday2['class'] }}">{{ row.friday2['data'] }}</td>
+            
         </tr>
         {% endfor %}
     </table>
 </body>
 </html>
 {% endblock %}
--->
