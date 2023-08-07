@@ -4,8 +4,7 @@ from gevent.pywsgi import WSGIServer
 app = create_app()
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    # app.run(debug=False)
     # Production using wsgi server
-    # http_server = WSGIServer(('', 8000), app)
-    # http_server.serve_forever()
+    app.run(port=5000)
     
