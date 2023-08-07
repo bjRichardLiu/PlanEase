@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
 from .models import Task, ReservedTime, WakeUpTime
 from . import db
@@ -33,6 +33,7 @@ def home():
 
         db.session.commit()
         createNewSchedule()
+        return redirect(url_for('schedule.display_schedule'))
 
     return render_template("home.html", user=current_user)
 
