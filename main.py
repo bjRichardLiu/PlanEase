@@ -1,5 +1,4 @@
 from website import create_app
-from gevent.pywsgi import WSGIServer
 
 app = create_app()
 

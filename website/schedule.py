@@ -21,10 +21,12 @@ def generate_schedule():
 
     # Prepare the schedule data to be sent to the template
     schedule_data = []
-    for i in range(24):
+    for i in range(18):
         time1 = f'{i // 2:02d}:{i % 2 * 30:02d}'
-        j = i + 24
+        j = i + 18
         time2 = f'{j // 2:02d}:{j % 2 * 30:02d}'
+        k = i + 18
+        time3 = f'{k // 2:02d}:{k % 2 * 30:02d}'
         row_data = {
             'time1': time1,
             'monday1': intToTask[int(week[i, 0])],
@@ -32,12 +34,20 @@ def generate_schedule():
             'wednesday1': intToTask[int(week[i, 2])],
             'thursday1': intToTask[int(week[i, 3])],
             'friday1': intToTask[int(week[i, 4])],
+            
             'time2': time2,
             'monday2': intToTask[int(week[j, 0])],
             'tuesday2': intToTask[int(week[j, 1])],
             'wednesday2': intToTask[int(week[j, 2])],
             'thursday2': intToTask[int(week[j, 3])],
             'friday2': intToTask[int(week[j, 4])],
+            
+            'time3': time3,
+            'monday3': intToTask[int(week[k, 0])],
+            'tuesday3': intToTask[int(week[k, 1])],
+            'wednesday3': intToTask[int(week[k, 2])],
+            'thursday3': intToTask[int(week[k, 3])],
+            'friday3': intToTask[int(week[k, 4])],
         }
         schedule_data.append(row_data)
 

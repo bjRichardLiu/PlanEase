@@ -9,9 +9,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Schedule</h1>
+    <h2>Schedule</h2>
     <table>
         <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
             <th>Time</th>
             <th>Monday</th>
             <th>Tuesday</th>
@@ -33,12 +39,21 @@
             <td class="{{ row.wednesday1['class'] }}">{{ row.wednesday1['data'] }}</td>
             <td class="{{ row.thursday1['class'] }}">{{ row.thursday1['data'] }}</td>
             <td class="{{ row.friday1['class'] }}">{{ row.friday1['data'] }}</td>
+
             <td>{{ row.time2 }}</td>
             <td class="{{ row.monday2['class'] }}">{{ row.monday2['data'] }}</td>
             <td class="{{ row.tuesday2['class'] }}">{{ row.tuesday2['data'] }}</td>
             <td class="{{ row.wednesday2['class'] }}">{{ row.wednesday2['data'] }}</td>
             <td class="{{ row.thursday2['class'] }}">{{ row.thursday2['data'] }}</td>
             <td class="{{ row.friday2['class'] }}">{{ row.friday2['data'] }}</td>
+
+            <td>{{ row.time3 }}</td>
+            <td class="{{ row.monday3['class'] }}">{{ row.monday3['data'] }}</td>
+            <td class="{{ row.tuesday3['class'] }}">{{ row.tuesday3['data'] }}</td>
+            <td class="{{ row.wednesday3['class'] }}">{{ row.wednesday3['data'] }}</td>
+            <td class="{{ row.thursday3['class'] }}">{{ row.thursday3['data'] }}</td>
+            <td class="{{ row.friday3['class'] }}">{{ row.friday3['data'] }}</td>
+
             
         </tr>
         {% endfor %}
