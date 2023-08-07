@@ -2,7 +2,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<head>
+<head> 
     <style>
         * {
           box-sizing: border-box;
@@ -38,9 +38,10 @@
 </head>
 
 <body>
-    <h1>Input Data</h1>
     <br>
     <br>
+    <br>
+
     <form method="POST" action="{{ url_for('views.home') }}">
         <!-- Wake Up Time -->
         <table border="2" class="normal">
@@ -69,7 +70,7 @@
                             <td align="right" class="wide">
                                 Start Time:
                                 <input type="time" id="start_time_1" name="start_time_1" value="08:00"><br>
-                                End Time:
+                                &nbsp&nbspEnd Time:
                                 <input type="time" id="end_time_1" name="end_time_1" value="08:00"><br>
                             </td>
                         </tr>
@@ -91,7 +92,7 @@
                             <td align="right" class="wide">
                                 Start Time:
                                 <input type="time" id="start_time_2" name="start_time_2" value="08:00"><br>
-                                End Time:
+                                &nbsp&nbspEnd Time:
                                 <input type="time" id="end_time_2" name="end_time_2" value="08:00"><br>
                             </td>
                         </tr>
@@ -121,7 +122,7 @@
                                 <input type="text" size="4" id="timeRequired_1" name="timeRequired_1" value="0">&nbsphrs<br>
                             </td>
                             <td align="left" class="wide">
-                                <h6>&nbsp&nbsp&nbsp&nbspDeadline</h6>
+                                <center>Deadline:</center>
                                 <input type="radio" id="deadline_1" name="deadline_1" value="Monday">Monday<br>
                                 <input type="radio" id="deadline_1" name="deadline_1" value="Tuesday">Tuesday<br>
                                 <input type="radio" id="deadline_1" name="deadline_1" value="Wednesday">Wednesday<br>
@@ -129,7 +130,7 @@
                                 <input type="radio" id="deadline_1" name="deadline_1" value="Friday" checked>Friday<br>
                             </td>
                             <td align="left" class="wide">
-                                <h6>Time Preferences</h6>
+                                <center>Time Preferences:</center>
                                 <input type="radio" id="morning_1" name="morning_1" value="Morning" checked>Morning<br>
                                 <input type="radio" id="morning_1" name="morning_1" value="Afternoon">Afternoon<br>
                                 <input type="radio" id="morning_1" name="morning_1" value="Evening">Evening<br>
@@ -159,7 +160,7 @@
                                 <input type="text" size="4" id="timeRequired_2" name="timeRequired_2" value="0">&nbsphrs<br>
                             </td>
                             <td align="left" class="wide">
-                                <h6>&nbsp&nbsp&nbsp&nbspDeadline</h6>
+                                <center>Deadline:</center>
                                 <input type="radio" id="deadline_2" name="deadline_2" value="Monday">Monday<br>
                                 <input type="radio" id="deadline_2" name="deadline_2" value="Tuesday">Tuesday<br>
                                 <input type="radio" id="deadline_2" name="deadline_2" value="Wednesday">Wednesday<br>
@@ -167,7 +168,7 @@
                                 <input type="radio" id="deadline_2" name="deadline_2" value="Friday" checked>Friday<br>
                             </td>
                             <td align="left" class="wide">
-                                <h6>Time Preferences</h6>
+                                <center>Time Preferences:</center>
                                 <input type="radio" id="morning_2" name="morning_2" value="Morning" checked>Morning<br>
                                 <input type="radio" id="morning_2" name="morning_2" value="Afternoon">Afternoon<br>
                                 <input type="radio" id="morning_2" name="morning_2" value="Evening">Evening<br>
@@ -197,7 +198,7 @@
                                 <input type="text" size="4" id="timeRequired_3" name="timeRequired_3" value="0">&nbsphrs<br>
                             </td>
                             <td align="left" class="wide">
-                                <h6>&nbsp&nbsp&nbsp&nbspDeadline</h6>
+                                <center>Deadline:</center>
                                 <input type="radio" id="deadline_3" name="deadline_3" value="Monday">Monday<br>
                                 <input type="radio" id="deadline_3" name="deadline_3" value="Tuesday">Tuesday<br>
                                 <input type="radio" id="deadline_3" name="deadline_3" value="Wednesday">Wednesday<br>
@@ -205,7 +206,7 @@
                                 <input type="radio" id="deadline_3" name="deadline_3" value="Friday" checked>Friday<br>
                             </td>
                             <td align="left" class="wide">
-                                <h6>Time Preferences</h6>
+                                <center>Time Preferences:</center>
                                 <input type="radio" id="morning_3" name="morning_3" value="Morning" checked>Morning<br>
                                 <input type="radio" id="morning_3" name="morning_3" value="Afternoon">Afternoon<br>
                                 <input type="radio" id="morning_3" name="morning_3" value="Evening">Evening<br>
@@ -232,7 +233,7 @@
                                 <input type="text" size="4" id="timeRequired_4" name="timeRequired_4" value="0">&nbsphrs<br>
                             </td>
                             <td align="left" class="wide">
-                                <h6>&nbsp&nbsp&nbsp&nbspDeadline</h6>
+                                <center>Deadline:</center>
                                 <input type="radio" id="deadline_4" name="deadline_4" value="Monday">Monday<br>
                                 <input type="radio" id="deadline_4" name="deadline_4" value="Tuesday">Tuesday<br>
                                 <input type="radio" id="deadline_4" name="deadline_4" value="Wednesday">Wednesday<br>
@@ -240,7 +241,7 @@
                                 <input type="radio" id="deadline_4" name="deadline_4" value="Friday" checked>Friday<br>
                             </td>
                             <td align="left" class="wide">
-                                <h6>Time Preferences</h6>
+                                <center>Time Preferences:</center>
                                 <input type="radio" id="morning_4" name="morning_4" value="Morning" checked>Morning<br>
                                 <input type="radio" id="morning_4" name="morning_4" value="Afternoon">Afternoon<br>
                                 <input type="radio" id="morning_4" name="morning_4" value="Evening">Evening<br>
