@@ -21,9 +21,11 @@ def create_app():
     
     from .views import views
     from .auth import auth
+    from .schedule import schedule
     
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
+    app.register_blueprint(schedule, url_prefix='/')
     
     from .models import User, Task, ReservedTime, WakeUpTime
 
