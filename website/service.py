@@ -92,7 +92,11 @@ def add_task(week, eventID=0, time=0, timePreference=1, wakeUpTime=0, deadline=5
 # Helper function for add_task
 def addEventHelper(week, eventID, time, startTime, endDate):
     for i in range(startTime, startTime + 24):
+<<<<<<< Updated upstream
         if time == 0:
+=======
+        if time == 0 or i >= 48:
+>>>>>>> Stashed changes
             return week, time
         for j in range(endDate + 1):
             if week[i, j] == 0:
