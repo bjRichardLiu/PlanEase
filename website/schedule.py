@@ -1,6 +1,6 @@
 from flask import render_template, Blueprint, request, flash, jsonify, redirect, url_for
 from flask_login import login_required, current_user
-from .service import createNewSchedule
+from .service import createNewSchedule, delete_user_data
 import numpy as np
 
 schedule = Blueprint('schedule', __name__)
@@ -17,7 +17,13 @@ def display_schedule():
 # The following code is for generating the schedule data
 
 def generate_schedule():
-    week, intToTask = createNewSchedule()
+    try:
+        week, intToTask = createNewSchedule()
+    except Exception as e:
+        print(e)
+        week = np.zeros((48, 5))
+        intToTask = {0: 'Free'}
+        delete_user_data()
 
     # Prepare the schedule data to be sent to the template
     schedule_data = []
