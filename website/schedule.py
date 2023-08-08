@@ -25,7 +25,7 @@ def generate_schedule():
         time1 = f'{i // 2:02d}:{i % 2 * 30:02d}'
         j = i + 16
         time2 = f'{j // 2:02d}:{j % 2 * 30:02d}'
-        print(k)
+        k = j + 16
         time3 = f'{k // 2:02d}:{k % 2 * 30:02d}'
         row_data = {
             'time1': time1,
